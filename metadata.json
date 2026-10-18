@@ -1,0 +1,6 @@
+{
+  "name": "Vegina Bangladesh - Organic Grocery & E-Commerce",
+  "description": "A vibrant Bangladesh-focused organic fresh grocery and food e-commerce platform inspired by Vegina Store, featuring BDT pricing, bKash/Nagad/COD checkout, category browsing, and Firebase sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
