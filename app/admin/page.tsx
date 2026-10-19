@@ -76,6 +76,12 @@ interface CustomerSummary {
   crmNotes?: string;
 }
 
+export interface AdminOrder extends Order {
+  riderName?: string;
+  riderPhone?: string;
+  adminNotes?: string;
+}
+
 export default function AdminCrmPage() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
@@ -87,7 +93,7 @@ export default function AdminCrmPage() {
   const [activeTab, setActiveTab] = useState<CrmTab>('overview');
 
   // Firestore Data
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [orders, setOrders] = useState<AdminOrder[]>([]);
   const [inventoryList, setInventoryList] = useState<Product[]>(PRODUCTS);
 
   // Filters & Search
@@ -97,7 +103,7 @@ export default function AdminCrmPage() {
   const [divisionFilter, setDivisionFilter] = useState<string>('all');
 
   // Selected Items for Drawers / Modals
-  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<AdminOrder | null>(null);
   const [selectedCustomer, setSelectedCustomer] = useState<CustomerSummary | null>(null);
   const [isNewProductOpen, setIsNewProductOpen] = useState(false);
   const [isPackingSlipOpen, setIsPackingSlipOpen] = useState(false);
@@ -167,12 +173,12 @@ export default function AdminCrmPage() {
     }
   }, [isAuthorizedAdmin]);
 
-  const handleSelectOrder = (ord: Order | null) => {
-    setSelectedOrder(ord);
+  const handleSelectOrder = (ord: AdminOrder | Order | null) => {
+    setSelectedOrder(ord as AdminOrder | null);
     if (ord) {
-      setRiderNameInput(ord.riderName || '');
-      setRiderPhoneInput(ord.riderPhone || '');
-      setAdminNoteInput(ord.adminNotes || '');
+      setRiderNameInput((ord as any).riderName || '');
+      setRiderPhoneInput((ord as any).riderPhone || '');
+      setAdminNoteInput((ord as any).adminNotes || '');
     }
   };
 
@@ -1501,7 +1507,7 @@ export default function AdminCrmPage() {
                         </div>
                         <p className="text-slate-700 font-medium">{ord.customerName} • {ord.customerPhone}</p>
                         <p className="text-[11px] text-sky-900 font-medium">
-                          Rider: {ord.riderName || 'Unassigned'} {ord.riderPhone ? `(${ord.riderPhone})` : ''}
+                          Rider: {(ord as any).riderName || 'Unassigned'} {(ord as any).riderPhone ? `(${(ord as any).riderPhone})` : ''}
                         </p>
                         <div className="pt-1 flex justify-between items-center text-[10px]">
                           <span className="bg-white px-2 py-0.5 rounded border border-sky-200 font-semibold">

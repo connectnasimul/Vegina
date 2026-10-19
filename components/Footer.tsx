@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useAuthAndCart } from '@/context/AuthAndCartContext';
 import { Phone, Mail, MapPin, Send, ShieldCheck, Truck, Sparkles, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Footer() {
   const { t, showToast, lang } = useAuthAndCart();
@@ -189,9 +190,19 @@ export default function Footer() {
           <p>
             © {new Date().getFullYear()} VEGINA BANGLADESH. All Rights Reserved. Inspired by Vegina Store.
           </p>
-          <div className="flex items-center gap-1 text-emerald-300">
-            <span>{t('Crafted for health & organic living in Bangladesh', 'বাংলাদেশের সুস্থ ও খাঁটি জীবনের জন্য নিবেদিত')}</span>
-            <Heart className="w-3 h-3 text-rose-400 fill-rose-400 inline" />
+          <div className="flex flex-wrap items-center gap-3">
+            <Link
+              href="/admin"
+              className="text-amber-400 hover:text-amber-300 font-bold bg-emerald-900/90 hover:bg-emerald-800 px-3 py-1 rounded-xl border border-emerald-700/60 transition flex items-center gap-1.5 shadow-xs"
+              title="Open Admin CRM Portal"
+            >
+              <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+              <span>CRM /admin Portal</span>
+            </Link>
+            <div className="flex items-center gap-1 text-emerald-300">
+              <span>{t('Crafted for health & organic living in Bangladesh', 'বাংলাদেশের সুস্থ ও খাঁটি জীবনের জন্য নিবেদিত')}</span>
+              <Heart className="w-3 h-3 text-rose-400 fill-rose-400 inline" />
+            </div>
           </div>
         </div>
       </div>

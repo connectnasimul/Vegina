@@ -19,6 +19,7 @@ import {
   X,
 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface HeaderProps {
   onCategorySelect?: (categoryId: string) => void;
@@ -127,6 +128,16 @@ export default function Header({ onCategorySelect, selectedCategory = 'all' }: H
               <Phone className="w-3 h-3 text-emerald-300" />
               <span className="font-medium">09612-VEGINA</span>
             </a>
+
+            {/* CRM Portal Access */}
+            <Link
+              href="/admin"
+              className="flex items-center gap-1 bg-amber-400 text-emerald-950 hover:bg-amber-300 font-black px-2 py-0.5 rounded text-[11px] shadow-sm transition"
+              title="Open CRM Admin Portal"
+            >
+              <ShieldCheck className="w-3 h-3 text-emerald-950" />
+              <span>CRM /admin</span>
+            </Link>
 
             {/* Language Switcher */}
             <button
@@ -346,18 +357,14 @@ export default function Header({ onCategorySelect, selectedCategory = 'all' }: H
                         {t('My Orders & Account', 'আমার অর্ডার ও অ্যাকাউন্ট')}
                       </button>
 
-                      {isAdmin && (
-                        <button
-                          onClick={() => {
-                            setIsAdminModalOpen(true);
-                            setIsUserMenuOpen(false);
-                          }}
-                          className="w-full text-left px-3.5 py-2 text-xs text-amber-800 hover:bg-amber-50 flex items-center gap-2 font-semibold cursor-pointer"
-                        >
-                          <ShieldCheck className="w-4 h-4 text-amber-600" />
-                          {t('Store Manager Panel', 'অর্ডার কন্ট্রোল প্যানেল')}
-                        </button>
-                      )}
+                      <Link
+                        href="/admin"
+                        onClick={() => setIsUserMenuOpen(false)}
+                        className="w-full text-left px-3.5 py-2 text-xs text-amber-800 hover:bg-amber-50 flex items-center gap-2 font-bold cursor-pointer"
+                      >
+                        <ShieldCheck className="w-4 h-4 text-amber-600" />
+                        <span>{t('CRM Portal (/admin)', 'সিআরএম অ্যাডমিন পোর্টাল (/admin)')}</span>
+                      </Link>
 
                       <button
                         onClick={() => {

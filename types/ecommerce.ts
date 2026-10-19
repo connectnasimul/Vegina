@@ -80,6 +80,9 @@ export interface Order {
   total: number;
   status: OrderStatus;
   notes?: string;
+  adminNotes?: string;
+  riderName?: string;
+  riderPhone?: string;
   createdAt: string;
   updatedAt: string;
 }

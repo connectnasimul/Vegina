@@ -40,6 +40,9 @@
         "total": { "type": "number" },
         "status": { "type": "string", "maxLength": 32 },
         "notes": { "type": "string", "maxLength": 500 },
+        "adminNotes": { "type": "string", "maxLength": 1000 },
+        "riderName": { "type": "string", "maxLength": 128 },
+        "riderPhone": { "type": "string", "maxLength": 32 },
         "createdAt": { "type": "string", "maxLength": 64 },
         "updatedAt": { "type": "string", "maxLength": 64 }
       },
@@ -56,6 +59,21 @@
         "createdAt": { "type": "string", "maxLength": 64 }
       },
       "required": ["userId", "productId"]
+    },
+    "CustomerCrmProfile": {
+      "title": "CustomerCrmProfile",
+      "description": "CRM customer notes, tags and VIP status managed by admins",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "customerEmail": { "type": "string", "maxLength": 256 },
+        "customerPhone": { "type": "string", "maxLength": 32 },
+        "tags": { "type": "array" },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "tier": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "customerEmail"]
     }
   },
   "firestore": {
@@ -70,6 +88,10 @@
     "/wishlists/{wishlistId}": {
       "schema": "WishlistItem",
       "description": "Customer saved product bookmarks"
+    },
+    "/crm_customers/{customerId}": {
+      "schema": "CustomerCrmProfile",
+      "description": "CRM customer profiles and notes for admins"
     }
   }
 }
