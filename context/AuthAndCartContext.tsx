@@ -544,6 +544,65 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
       setOrders((prev) => [orderData, ...prev]);
     }
 
+    // ── Google Sheets sync (fire-and-forget) ──────────────────────────
+    try {
+      const sheetsPayload = {
+        orderId: orderData.id,
+        createdAt: orderData.createdAt,
+        // Customer Information
+        customerName: orderData.customerName,
+        customerPhone: orderData.customerPhone,
+        customerEmail: orderData.customerEmail,
+        // Delivery Address
+        division: orderData.division,
+        city: orderData.city,
+        deliveryAddress: orderData.deliveryAddress,
+        // Payment
+        paymentMethod: orderData.paymentMethod,
+        paymentStatus: orderData.paymentStatus,
+        transactionId: orderData.transactionId,
+        // Order Summary
+        items: orderData.items
+          .map((i) => `${i.nameBn || i.name} x${i.quantity} (৳${i.price})`)
+          .join(', '),
+        subtotal: orderData.subtotal,
+        deliveryFee: orderData.deliveryFee,
+        discount: orderData.discount,
+        total: orderData.total,
+        status: orderData.status,
+        notes: orderData.notes,
+      };
+
+      const sendToSheetsDirect = () => {
+        const directUrl =
+          process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
+          'https://script.google.com/macros/s/AKfycbyCB9GMx151wodvqD9qS2b-FEN6AgECTtvhXEVPsIyGxkut0c21yLd03t6YE0HI7mnmwQ/exec';
+        fetch(directUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(sheetsPayload),
+        }).catch((directErr) => console.warn('[Sheets] Direct sync failed:', directErr));
+      };
+
+      fetch('/api/sheets', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(sheetsPayload),
+      })
+        .then((res) => {
+          if (!res.ok) {
+            sendToSheetsDirect();
+          }
+        })
+        .catch(() => {
+          sendToSheetsDirect();
+        });
+    } catch (err) {
+      console.warn('[Sheets] Payload build error (non-critical):', err);
+    }
+    // ─────────────────────────────────────────────────────────────────
+
     setRecentOrder(orderData);
     clearCart();
     setIsCheckoutOpen(false);
