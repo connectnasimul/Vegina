@@ -14,8 +14,8 @@ export default function Footer() {
     if (!emailInput.trim()) return;
     showToast(
       lang === 'bn'
-        ? 'ধন্যবাদ! আপনার ইমেইলটি সংরক্ষিত হয়েছে। VEGINA100 কুপন কোড ব্যবহার করুন।'
-        : 'Thank you for subscribing! Use coupon VEGINA100 for ৳100 discount.',
+        ? 'ধন্যবাদ! আপনার ইমেইলটি সংরক্ষিত হয়েছে। ORGANIC100 কুপন কোড ব্যবহার করুন।'
+        : 'Thank you for subscribing! Use coupon ORGANIC100 for ৳100 discount.',
       'success'
     );
     setEmailInput('');
@@ -70,29 +70,29 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-green-400 flex items-center justify-center text-emerald-950 font-black text-xl shadow-md">
-                V
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-green-400 flex items-center justify-center text-emerald-950 font-black text-sm shadow-md">
+                OK
               </div>
               <span className="text-2xl font-black text-white tracking-tight">
-                VEGINA <span className="text-emerald-400 text-sm font-bold">BANGLADESH</span>
+                ORGANIC KHABAR <span className="text-emerald-400 text-sm font-bold">BANGLADESH</span>
               </span>
             </div>
 
             <p className="text-xs text-emerald-200/80 leading-relaxed max-w-sm">
               {t(
-                'Vegina Bangladesh is your trusted farm-to-door organic grocery partner. We bring natural, chemical-free food directly from verified rural growers in Bogura, Rajshahi, Rangpur and Sundarban to urban dining tables.',
-                'ভেজিলা বাংলাদেশ হলো খামার থেকে সরাসরি বাসায় পৌঁছানো নির্ভরযোগ্য অর্গানিক গ্রোসারি শপ। বগুড়া, রাজশাহী ও সুন্দরবনের খাঁটি উৎপাদকদের সরাসরি যুক্ত করে আমরা পৌছে দিচ্ছি পুষ্টিকর খাদ্য।'
+                'Organic Khabar Bangladesh is your trusted farm-to-door organic grocery partner. We bring natural, chemical-free food directly from verified rural growers in Bogura, Rajshahi, Rangpur and Sundarban to urban dining tables.',
+                'অর্গানিক খাবার বাংলাদেশ হলো খামার থেকে সরাসরি বাসায় পৌঁছানো নির্ভরযোগ্য অর্গানিক গ্রোসারি শপ। বগুড়া, রাজশাহী ও সুন্দরবনের খাঁটি উৎপাদকদের সরাসরি যুক্ত করে আমরা পৌছে দিচ্ছি পুষ্টিকর খাদ্য।'
               )}
             </p>
 
             <div className="space-y-2 text-xs text-emerald-300">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-emerald-400" />
-                <span className="font-semibold">হটলাইন: 09612-VEGINA (09612-834462)</span>
+                <span className="font-semibold">হটলাইন: 09612-ORGANIC (09612-834462)</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-emerald-400" />
-                <span>support@vegina.com.bd</span>
+                <span>support@organickhabar.com.bd</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-emerald-400" />
@@ -188,16 +188,16 @@ export default function Footer() {
         {/* Bottom Strip */}
         <div className="mt-12 pt-6 border-t border-emerald-900/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-emerald-300">
           <p>
-            © {new Date().getFullYear()} VEGINA BANGLADESH. All Rights Reserved. Inspired by Vegina Store.
+            © {new Date().getFullYear()} ORGANIC KHABAR BANGLADESH. All Rights Reserved. Organic Farm Direct E-Commerce.
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <Link
-              href="/admin"
+              href="/crm"
               className="text-amber-400 hover:text-amber-300 font-bold bg-emerald-900/90 hover:bg-emerald-800 px-3 py-1 rounded-xl border border-emerald-700/60 transition flex items-center gap-1.5 shadow-xs"
-              title="Open Admin CRM Portal"
+              title="Open CRM Portal"
             >
               <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
-              <span>CRM /admin Portal</span>
+              <span>CRM</span>
             </Link>
             <div className="flex items-center gap-1 text-emerald-300">
               <span>{t('Crafted for health & organic living in Bangladesh', 'বাংলাদেশের সুস্থ ও খাঁটি জীবনের জন্য নিবেদিত')}</span>

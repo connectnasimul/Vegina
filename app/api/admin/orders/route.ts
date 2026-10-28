@@ -47,7 +47,7 @@ export async function POST(req: Request) {
       // Create authentic Bangladeshi sample orders if database is fresh
       const sampleOrders = [
         {
-          id: 'VGN-BD-2026-901',
+          id: 'OK-BD-2026-901',
           userId: 'usr_gulshan_01',
           customerName: 'Nasimul Islam',
           customerEmail: 'connect.nasimul@gmail.com',
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
           updatedAt: new Date().toISOString(),
         },
         {
-          id: 'VGN-BD-2026-902',
+          id: 'OK-BD-2026-902',
           userId: 'usr_uttara_02',
           customerName: 'Farhana Yasmin',
           customerEmail: 'farhana.yasmin@gmail.com',
@@ -142,7 +142,7 @@ export async function POST(req: Request) {
           updatedAt: new Date().toISOString(),
         },
         {
-          id: 'VGN-BD-2026-903',
+          id: 'OK-BD-2026-903',
           userId: 'usr_ctg_03',
           customerName: 'Tanvir Hossain',
           customerEmail: 'tanvir.ctg@gmail.com',

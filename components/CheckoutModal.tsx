@@ -398,7 +398,7 @@ export default function CheckoutModal() {
                       {paymentMethod} {t('Merchant Account:', 'মার্চেন্ট পেমেন্ট নম্বর:')}
                     </p>
                     <p className="font-mono text-sm font-black text-emerald-800">
-                      01799-834462 <span className="text-xs font-normal text-gray-500">(Vegina Store BD)</span>
+                      01799-834462 <span className="text-xs font-normal text-gray-500">(Organic Khabar BD)</span>
                     </p>
                   </div>
                   <button

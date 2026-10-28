@@ -16,6 +16,7 @@ import {
   Sparkles,
   ExternalLink,
   ShieldCheck,
+  MapPin,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -290,8 +291,9 @@ export default function AccountModal() {
 
                       {/* Delivery Address & Actions */}
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-gray-100 text-xs text-gray-500">
-                        <span className="truncate max-w-sm">
-                          📍 {ord.deliveryAddress}, {ord.division}
+                        <span className="truncate max-w-sm flex items-center gap-1">
+                          <MapPin className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                          <span className="truncate">{ord.deliveryAddress}, {ord.division}</span>
                         </span>
                         <button
                           onClick={() => handleReorder(ord)}

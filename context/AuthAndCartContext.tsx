@@ -110,7 +110,10 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
   const [cart, setCart] = useState<CartItem[]>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const savedCart = localStorage.getItem('vegina_cart');
+        const savedCart =
+          localStorage.getItem('organickhabar_cart') ||
+          localStorage.getItem('shobuj_cart') ||
+          localStorage.getItem('vegina_cart');
         if (savedCart) return JSON.parse(savedCart);
       } catch {
         // ignore
@@ -121,7 +124,10 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
   const [wishlist, setWishlist] = useState<string[]>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const savedWishlist = localStorage.getItem('vegina_wishlist');
+        const savedWishlist =
+          localStorage.getItem('organickhabar_wishlist') ||
+          localStorage.getItem('shobuj_wishlist') ||
+          localStorage.getItem('vegina_wishlist');
         if (savedWishlist) return JSON.parse(savedWishlist);
       } catch {
         // ignore
@@ -147,7 +153,10 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
   const [lang, setLang] = useState<'bn' | 'en'>(() => {
     if (typeof window !== 'undefined') {
       try {
-        const savedLang = localStorage.getItem('vegina_lang');
+        const savedLang =
+          localStorage.getItem('organickhabar_lang') ||
+          localStorage.getItem('shobuj_lang') ||
+          localStorage.getItem('vegina_lang');
         if (savedLang === 'en' || savedLang === 'bn') return savedLang;
       } catch {
         // ignore
@@ -184,7 +193,7 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
   // Save cart to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('vegina_cart', JSON.stringify(cart));
+      localStorage.setItem('organickhabar_cart', JSON.stringify(cart));
     } catch {
       // ignore
     }
@@ -193,7 +202,7 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
   // Save wishlist to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('vegina_wishlist', JSON.stringify(wishlist));
+      localStorage.setItem('organickhabar_wishlist', JSON.stringify(wishlist));
     } catch {
       // ignore
     }
@@ -202,7 +211,7 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
   // Save language to localStorage
   useEffect(() => {
     try {
-      localStorage.setItem('vegina_lang', lang);
+      localStorage.setItem('organickhabar_lang', lang);
     } catch {
       // ignore
     }
@@ -497,14 +506,14 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
       throw new Error('Your cart is empty.');
     }
 
-    const orderId = `VGN-BD-${Date.now().toString().slice(-6)}`;
+    const orderId = `OK-BD-${Date.now().toString().slice(-6)}`;
     const effectiveUserId = user ? user.uid : `guest-${Date.now()}`;
 
     const orderData: Order = {
       id: orderId,
       userId: effectiveUserId,
       customerName: payload.customerName,
-      customerEmail: user?.email || 'guest@vegina.com.bd',
+      customerEmail: user?.email || 'guest@organickhabar.com.bd',
       customerPhone: payload.customerPhone,
       deliveryAddress: payload.deliveryAddress,
       division: selectedDivision,
@@ -543,65 +552,6 @@ export function AuthAndCartProvider({ children }: { children: React.ReactNode })
       // Local fallback for guest order
       setOrders((prev) => [orderData, ...prev]);
     }
-
-    // ── Google Sheets sync (fire-and-forget) ──────────────────────────
-    try {
-      const sheetsPayload = {
-        orderId: orderData.id,
-        createdAt: orderData.createdAt,
-        // Customer Information
-        customerName: orderData.customerName,
-        customerPhone: orderData.customerPhone,
-        customerEmail: orderData.customerEmail,
-        // Delivery Address
-        division: orderData.division,
-        city: orderData.city,
-        deliveryAddress: orderData.deliveryAddress,
-        // Payment
-        paymentMethod: orderData.paymentMethod,
-        paymentStatus: orderData.paymentStatus,
-        transactionId: orderData.transactionId,
-        // Order Summary
-        items: orderData.items
-          .map((i) => `${i.nameBn || i.name} x${i.quantity} (৳${i.price})`)
-          .join(', '),
-        subtotal: orderData.subtotal,
-        deliveryFee: orderData.deliveryFee,
-        discount: orderData.discount,
-        total: orderData.total,
-        status: orderData.status,
-        notes: orderData.notes,
-      };
-
-      const sendToSheetsDirect = () => {
-        const directUrl =
-          process.env.NEXT_PUBLIC_GOOGLE_SHEETS_WEBHOOK_URL ||
-          'https://script.google.com/macros/s/AKfycbyCB9GMx151wodvqD9qS2b-FEN6AgECTtvhXEVPsIyGxkut0c21yLd03t6YE0HI7mnmwQ/exec';
-        fetch(directUrl, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(sheetsPayload),
-        }).catch((directErr) => console.warn('[Sheets] Direct sync failed:', directErr));
-      };
-
-      fetch('/api/sheets', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sheetsPayload),
-      })
-        .then((res) => {
-          if (!res.ok) {
-            sendToSheetsDirect();
-          }
-        })
-        .catch(() => {
-          sendToSheetsDirect();
-        });
-    } catch (err) {
-      console.warn('[Sheets] Payload build error (non-critical):', err);
-    }
-    // ─────────────────────────────────────────────────────────────────
 
     setRecentOrder(orderData);
     clearCart();

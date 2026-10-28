@@ -47,7 +47,7 @@ export default function HeroBanner({ onShopClick, onDealsClick }: HeroBannerProp
           {/* Promo code pill */}
           <div className="inline-flex items-center gap-3 bg-amber-400 text-emerald-950 px-4 py-2 rounded-2xl font-bold text-xs sm:text-sm shadow-lg shadow-amber-400/20">
             <Sparkles className="w-4 h-4 text-emerald-900" />
-            <span>{t('Special Offer: Use code', 'বিশেষ অফার: কোড দিন')} <strong className="font-black underline tracking-wide">VEGINA100</strong> {t('for ৳100 discount!', 'পেয়ে যান ৳১০০ ছাড়!')}</span>
+            <span>{t('Special Offer: Use code', 'বিশেষ অফার: কোড দিন')} <strong className="font-black underline tracking-wide">ORGANIC100</strong> {t('for ৳100 discount!', 'পেয়ে যান ৳১০০ ছাড়!')}</span>
           </div>
 
           {/* Action CTAs */}
@@ -92,7 +92,7 @@ export default function HeroBanner({ onShopClick, onDealsClick }: HeroBannerProp
           <div className="relative rounded-3xl overflow-hidden border-4 border-emerald-500/30 shadow-2xl aspect-4/3 bg-emerald-950">
             <Image
               src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80"
-              alt="Fresh Organic Vegetables Vegina Bangladesh"
+              alt="Fresh Organic Vegetables Organic Khabar Bangladesh"
               fill
               priority
               sizes="(max-width: 768px) 100vw, 400px"

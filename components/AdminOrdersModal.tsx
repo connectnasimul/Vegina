@@ -14,7 +14,9 @@ import {
   Phone,
   MapPin,
   RefreshCw,
+  ExternalLink,
 } from 'lucide-react';
+import Link from 'next/link';
 
 export default function AdminOrdersModal() {
   const {
@@ -62,7 +64,7 @@ export default function AdminOrdersModal() {
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base sm:text-lg font-black text-gray-900 leading-tight">
-                  {t('Vegina BD Store Manager', 'ভেজিলা স্টোর ম্যানেজার ড্যাশবোর্ড')}
+                  {t('Organic Khabar BD Store Manager', 'অর্গানিক খাবার স্টোর ম্যানেজার ড্যাশবোর্ড')}
                 </h2>
                 <span className="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">
                   Admin Active
@@ -77,12 +79,23 @@ export default function AdminOrdersModal() {
             </div>
           </div>
 
-          <button
-            onClick={() => setIsAdminModalOpen(false)}
-            className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition cursor-pointer"
-          >
-            <X className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <Link
+              href="/crm"
+              onClick={() => setIsAdminModalOpen(false)}
+              className="hidden sm:flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-xs transition"
+              title="Open Full Enterprise CRM"
+            >
+              <span>{t('Open Full CRM', 'সম্পূর্ণ সিআরএম')}</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </Link>
+            <button
+              onClick={() => setIsAdminModalOpen(false)}
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 flex items-center justify-center transition cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Analytics Highlights */}

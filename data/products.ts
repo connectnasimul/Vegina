@@ -521,6 +521,9 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const PROMO_CODES: Record<string, { discountPercent?: number; discountFixed?: number; description: string }> = {
+  ORGANIC100: { discountFixed: 100, description: '৳100 off on any order' },
+  KHABAR100: { discountFixed: 100, description: '৳100 off on any order' },
+  SHOBUJ100: { discountFixed: 100, description: '৳100 off on any order' },
   VEGINA100: { discountFixed: 100, description: '৳100 off on any order' },
   FARM20: { discountPercent: 20, description: '20% off on all organic fresh items' },
   ORGANIC50: { discountFixed: 50, description: '৳50 special organic discount' },

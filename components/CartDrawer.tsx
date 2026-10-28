@@ -130,8 +130,8 @@ export default function CartDrawer() {
                 <Sparkles className="w-4 h-4 text-emerald-600" />
                 <span>
                   {t(
-                    '🎉 You have unlocked FREE Express Delivery!',
-                    '🎉 অভিনন্দন! আপনি ফ্রি হোম ডেলিভারি অফার পেয়েছেন!'
+                    'You have unlocked FREE Express Delivery!',
+                    'অভিনন্দন! আপনি ফ্রি হোম ডেলিভারি অফার পেয়েছেন!'
                   )}
                 </span>
               </div>
@@ -251,7 +251,7 @@ export default function CartDrawer() {
                       type="text"
                       value={couponInput}
                       onChange={(e) => setCouponInput(e.target.value)}
-                      placeholder={t('Promo Code (e.g. VEGINA100)', 'প্রোমো কোড (যেমন VEGINA100)')}
+                      placeholder={t('Promo Code (e.g. ORGANIC100)', 'প্রোমো কোড (যেমন ORGANIC100)')}
                       className="flex-1 bg-white border border-gray-200 rounded-xl px-3 py-1.5 text-xs text-gray-800 focus:outline-none focus:border-emerald-500 uppercase tracking-wider"
                     />
                     <button

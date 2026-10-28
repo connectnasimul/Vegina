@@ -126,17 +126,17 @@ export default function Header({ onCategorySelect, selectedCategory = 'all' }: H
               className="flex items-center gap-1 hover:text-white transition-colors"
             >
               <Phone className="w-3 h-3 text-emerald-300" />
-              <span className="font-medium">09612-VEGINA</span>
+              <span className="font-medium">09612-ORGANIC</span>
             </a>
 
             {/* CRM Portal Access */}
             <Link
-              href="/admin"
-              className="flex items-center gap-1 bg-amber-400 text-emerald-950 hover:bg-amber-300 font-black px-2 py-0.5 rounded text-[11px] shadow-sm transition"
-              title="Open CRM Admin Portal"
+              href="/crm"
+              className="flex items-center gap-1 bg-amber-400 text-emerald-950 hover:bg-amber-300 font-black px-2.5 py-0.5 rounded text-[11px] shadow-sm transition"
+              title="Open CRM Portal"
             >
               <ShieldCheck className="w-3 h-3 text-emerald-950" />
-              <span>CRM /admin</span>
+              <span>CRM</span>
             </Link>
 
             {/* Language Switcher */}
@@ -159,11 +159,11 @@ export default function Header({ onCategorySelect, selectedCategory = 'all' }: H
           <div className="flex items-center gap-2">
             <a href="#" className="flex items-center gap-2 group">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-green-500 flex items-center justify-center text-white shadow-md shadow-emerald-600/20 group-hover:scale-105 transition-transform">
-                <span className="text-xl font-black tracking-tight">V</span>
+                <span className="text-base font-black tracking-tight">OK</span>
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-black tracking-tight text-emerald-900 flex items-center gap-1 leading-tight">
-                  VEGINA
+                  ORGANIC KHABAR
                   <span className="text-xs bg-emerald-100 text-emerald-700 font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">
                     BD
                   </span>
@@ -358,12 +358,12 @@ export default function Header({ onCategorySelect, selectedCategory = 'all' }: H
                       </button>
 
                       <Link
-                        href="/admin"
+                        href="/crm"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="w-full text-left px-3.5 py-2 text-xs text-amber-800 hover:bg-amber-50 flex items-center gap-2 font-bold cursor-pointer"
                       >
                         <ShieldCheck className="w-4 h-4 text-amber-600" />
-                        <span>{t('CRM Portal (/admin)', 'সিআরএম অ্যাডমিন পোর্টাল (/admin)')}</span>
+                        <span>{t('CRM Portal', 'সিআরএম পোর্টাল')}</span>
                       </Link>
 
                       <button

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Product } from '@/types/ecommerce';
 import { useAuthAndCart } from '@/context/AuthAndCartContext';
-import { Plus, Minus, Heart, Eye, Star, ShieldCheck, Sparkles } from 'lucide-react';
+import { Plus, Minus, Heart, Eye, Star, ShieldCheck, Sparkles, MapPin } from 'lucide-react';
 import Image from 'next/image';
 
 interface ProductCardProps {
@@ -89,8 +89,9 @@ export default function ProductCard({ product }: ProductCardProps) {
 
           {/* Farm Origin Strip at bottom of image */}
           <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none">
-            <span className="bg-emerald-950/80 backdrop-blur-sm text-emerald-100 text-[10px] font-medium px-2 py-0.5 rounded-md truncate max-w-[85%]">
-              📍 {product.originBn || product.origin}
+            <span className="bg-emerald-950/80 backdrop-blur-sm text-emerald-100 text-[10px] font-medium px-2 py-0.5 rounded-md truncate max-w-[85%] flex items-center gap-1">
+              <MapPin className="w-2.5 h-2.5 text-emerald-400 flex-shrink-0" />
+              <span>{product.originBn || product.origin}</span>
             </span>
           </div>
         </div>

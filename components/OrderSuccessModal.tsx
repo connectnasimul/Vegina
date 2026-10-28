@@ -41,8 +41,8 @@ export default function OrderSuccessModal() {
           </h2>
           <p className="text-xs sm:text-sm text-emerald-100 mt-1 max-w-sm mx-auto">
             {t(
-              'Thank you for choosing Vegina Bangladesh. Our agro-team has started packing your fresh produce.',
-              'ভেজিলা বাংলাদেশের সাথে থাকার জন্য ধন্যবাদ। আমাদের খামার থেকে তাজা পণ্য প্রস্তুত হচ্ছে।'
+              'Thank you for choosing Organic Khabar Bangladesh. Our agro-team has started packing your fresh produce.',
+              'অর্গানিক খাবার বাংলাদেশের সাথে থাকার জন্য ধন্যবাদ। আমাদের খামার থেকে তাজা পণ্য প্রস্তুত হচ্ছে।'
             )}
           </p>
 

@@ -28,7 +28,7 @@ export default function FarmerStory() {
     {
       name: 'Mahfuza Begum',
       location: 'Dhanmondi, Dhaka',
-      commentBn: 'দেশি মুরগির ডিম ও চিনিগুঁড়া চাল চমৎকার। বাচ্চাদের খাবারের জন্য ভেজিলাই আমাদের প্রথম পছন্দ।',
+      commentBn: 'দেশি মুরগির ডিম ও চিনিগুঁড়া চাল চমৎকার। বাচ্চাদের খাবারের জন্য অর্গানিক খাবার আমাদের প্রথম পছন্দ।',
       commentEn: 'Free-range eggs and aromatic Chinigura rice are staple for our kids. 100% reliable organic source.',
       rating: 5,
       date: '৩ দিন আগে',
